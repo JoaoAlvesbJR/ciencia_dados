@@ -1,0 +1,8 @@
+Projeto de ciência de dados
+
+Para iniciar o projeto será necessário:
+O download do arquivo ClientesBanco inserido no repositório;
+Alterar o caminho da variável tabela_clientes;
+
+
+
