@@ -1,0 +1,23 @@
+import pandas as pd #pandas é a biblioteca capaz de ler e imprimir arquivos: excel, csv e etc.
+tabela_clientes = pd.read_csv(r"/content/drive/MyDrive/Colab Notebooks/ClientesBanco.csv", encoding="latin1") #importando arquivo csv | encoding="latin1" => Para o código aceitar idioma latino (~ç^)
+tabela_clientes = tabela_clientes.drop("CLIENTNUM", axis=1) #drop para excluir a coluna | axis: Eixo da coluna | axis=1 para excluir colunas | axis=0 para excluir linhas
+
+display(tabela_clientes)
+
+display(tabela_clientes.info())
+
+tabela_clientes = tabela_clientes.dropna() #exclui linhas 
+display(tabela_clientes.info())
+display(tabela_clientes.describe()) #describe() descreve informações que estão na tabela
+
+display(tabela_clientes["Categoria"].value_counts()) #Value_counts() => ele passa somente os valores da coluna indicada
+display(tabela_clientes["Categoria"].value_counts(normalize=True)) #normalize=True para ativar o normalize e mostrar os dados percentualmente falando.
+
+import plotly.express as px #importa a biblioteca plotly que permite a criação de graficos. PESQUISAR
+#para cada coluna da tabela exibe o grafico
+for coluna in tabela_clientes:  #index = pega linhas se quiser.
+  #criar figura
+  fig = px.histogram(tabela_clientes, x=coluna, color="Categoria") #histogram: Quantidade de itens que tem na base de dados  |  #color="coluna que é pra mudar a cor"
+  #exibir figura
+  display(fig)
+  
